@@ -38,7 +38,7 @@ namespace Gev
             sourceList.ForEach(source =>
             {
                 listOfProviders.Where(x => x.IndexOf(
-                    source, 0, StringComparison.OrdinalIgnoreCase) >= 0).ToList().ForEach(y =>
+                    source.Trim(), 0, StringComparison.OrdinalIgnoreCase) >= 0).ToList().ForEach(y =>
                         providerXPath.Add(y)
                     );
             });

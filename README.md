@@ -43,7 +43,7 @@ Example:         "gev --path ".\application.evtx" --source "chkdsk, wininit" --l
                  that have an event level of "critical", "error", or "warning"
 ```
 
-#Sample output:
+### Sample output:
 
 Text:
 ```

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Xml.Serialization;
 
-namespace Gev
+namespace Honeypox.Gev
 {
     internal static class Globals
     {

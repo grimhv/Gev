@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Gev
+namespace Honeypox.Gev
 {
     public class GevLog
     {

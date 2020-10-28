@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 
-namespace Gev
+namespace Honeypox.Gev
 {
     class XPathBuilder
     {

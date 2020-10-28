@@ -834,8 +834,7 @@ namespace Honeypox.Gev
             Environment.Exit(1);
         }
 
-        /// <summary>
-        /// Display the debugging information about command-line arguments
+        /// <summary> Display the debugging information about command-line arguments </summary>
         private static void DisplayArguments(GevLog.LogQuery log)
         {
             Console.WriteLine($"\nParsed arguments:\n");

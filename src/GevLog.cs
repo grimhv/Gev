@@ -12,20 +12,19 @@ namespace Honeypox.Gev
             {
                 Index = index;
                 Id = id;
-                LevelName = levelName;
-                LevelNumber = levelNumber;
-                Date = date;
-                Source = source;
-                Description = description;
+                LevelDisplayName = levelName;
+                Level = levelNumber;
+                TimeCreated = date;
+                ProviderName = source;
+                FormatDescription = description;
             }
-
             public int Index { get; set; }
             public string Id { get; set; }
-            public string LevelName { get; set; }
-            public int LevelNumber { get; set; }
-            public string Date { get; set; }
-            public string Source { get; set; }
-            public string Description { get; set; }
+            public string LevelDisplayName { get; set; }
+            public int Level { get; set; }
+            public string TimeCreated { get; set; }
+            public string ProviderName { get; set; }
+            public string FormatDescription { get; set; }
         }
 
         internal class LogQuery

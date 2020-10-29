@@ -302,11 +302,11 @@ namespace Honeypox.Gev
                         outString +=
                         $"---------------------------------------------------------------------------------\n" +
                         $"Id                 : {record.Id}\n" +
-                        $"LevelDisplayName   : {record.LevelName}\n" +
-                        $"Level              : {record.LevelNumber}\n" +
-                        $"TimeCreated        : {record.Date}\n" +
-                        $"ProviderName       : {record.Source}\n" +
-                        $"FormatDescription  : {record.Description}\n" +
+                        $"LevelDisplayName   : {record.LevelDisplayName}\n" +
+                        $"Level              : {record.Level}\n" +
+                        $"TimeCreated        : {record.TimeCreated}\n" +
+                        $"ProviderName       : {record.ProviderName}\n" +
+                        $"FormatDescription  : {record.FormatDescription}\n" +
                         $"Records            : {Globals.TotalRecords}\n" +
                         $"---------------------------------------------------------------------------------" +
                         "\n\n";
@@ -333,13 +333,13 @@ namespace Honeypox.Gev
                                 $"        <th class=\"tg-h\">EventID</th>\n" +
                                 $"    </tr>\n" +
                                 $"    <tr>\n" +
-                                $"        <td class=\"tg-1\">{record.LevelName}</td>\n" +
-                                $"        <td class=\"tg-1\">{record.Date}</td>\n" +
-                                $"        <td class=\"tg-1\">{record.Source}</td>\n" +
+                                $"        <td class=\"tg-1\">{record.LevelDisplayName}</td>\n" +
+                                $"        <td class=\"tg-1\">{record.TimeCreated}</td>\n" +
+                                $"        <td class=\"tg-1\">{record.ProviderName}</td>\n" +
                                 $"        <td class=\"tg-1\">{record.Id}</td>\n" +
                                 $"    </tr>\n" +
                                 $"    <tr>\n" +
-                                $"        <td  class=\"tg-2\" colspan=\"4\"><pre>{record.Description}</pre></td>\n" +
+                                $"        <td  class=\"tg-2\" colspan=\"4\"><pre>{record.FormatDescription}</pre></td>\n" +
                                 $"    </tr>\n" +
                                 $"</table>\n" +
                                 $"<br>\n";
@@ -355,13 +355,13 @@ namespace Honeypox.Gev
                                 $"        <col style=\"width:10%\">\n" +
                                 $"    </colgroup>\n" +
                                 $"    <tr>\n" +
-                                $"        <td class=\"tg-1\">{record.LevelName}</td>\n" +
-                                $"        <td class=\"tg-1\">{record.Date}</td>\n" +
-                                $"        <td class=\"tg-1\">{record.Source}</td>\n" +
+                                $"        <td class=\"tg-1\">{record.LevelDisplayName}</td>\n" +
+                                $"        <td class=\"tg-1\">{record.TimeCreated}</td>\n" +
+                                $"        <td class=\"tg-1\">{record.ProviderName}</td>\n" +
                                 $"        <td class=\"tg-1\">{record.Id}</td>\n" +
                                 $"    </tr>\n" +
                                 $"    <tr>\n" +
-                                $"        <td  class=\"tg-2\" colspan=\"4\"><pre>{record.Description}</pre></td>\n" +
+                                $"        <td  class=\"tg-2\" colspan=\"4\"><pre>{record.FormatDescription}</pre></td>\n" +
                                 $"    </tr>\n" +
                                 $"</table>\n" +
                                 $"<br>\n";
@@ -396,33 +396,34 @@ namespace Honeypox.Gev
             Console.WriteLine("gev: (g)et (ev)ent.  Written by Anthony Grimaldi, September 2019.\n\nUsage:");
             Console.Write("--help ......... Help\n" +
                           "--path ......... Path to archived event viewer log\n" +
-                          "                 the only argument that is required\n" +
+                          "                     the only argument that is required\n" +
                           "--debug ........ Displays various debugging messages to the console\n" +
                           "--id ........... Id, comma separated (max 5)\n" +
-                          "                 e.g. \"-id 5,15,1337\"\n" +
+                          "                     e.g. '-id \"5, 15, 1337\"'\n" +
                           "--source ....... Sources, comma separated (max 5)\n" +
-                          "                 e.g. \'-source \"vss, chkdsk, ntfs\"\'\n" +
+                          "                     e.g. '-source \"vss, chkdsk, ntfs\"'\n" +
                           "--level ........ Sets the eventlevel.  Comma separated (max 5):\n" +
-                          "                 1 = critical\n" +
-                          "                 2 = error\n" +
-                          "                 3 = warning\n" +
-                          "                 4 = information\n" +
-                          "                 5 = verbose\n" +
+                          "                     1 = critical\n" +
+                          "                     2 = error\n" +
+                          "                     3 = warning\n" +
+                          "                     4 = information\n" +
+                          "                     5 = verbose\n" +
                           "--max .......... Sets the maximum number of events to output\n" +
                           "--direction .... Sets how to sort the output by date.  1 = Ascending, 2 = Descending\n" +
                           "--out-file ..... Sets the file gev outputs to\n" +
                           /* DISABLED "--query ........ Queries the dates in an event log\n" +
-                           *          "                 this won't output anything but the first and last date\n" +
-                           *          "                 of an event in a log rendering all the below arguments invalid\n" +
+                           *          "                     this won't output anything but the first and last date\n" +
+                           *          "                     of an event in a log rendering all the below arguments invalid\n" +
                            */
                           /* DISABLED "--exclude ...... exclude ids or sources, comma separated (max 10)\n" +
-                           *          "                 e.g. \"-x vss,15,chkdsk,1337\"\n" +
+                           *          "                     e.g. \"-x vss,15,chkdsk,1337\"\n" +
                            */
                           // DISABLED "--offset ....... offset\n" +
                           // DISABLED "--date ......... date range\n" +
+                          "\n" +
                           "Example:         \"gev --path \".\\application.evtx\" --source \"chkdsk, wininit\" --level 1,2,3\"\n" +
-                          "                 this will search the application.evtx log for all chkdsk and wininit events\n" +
-                          "                 that have an event level of \"critical\", \"error\", or \"warning\"\n");
+                          "                     this will search the application.evtx log for all chkdsk and wininit events\n" +
+                          "                     that have an event level of \"critical\", \"error\", or \"warning\"\n");
 
             Environment.Exit(1);
         }

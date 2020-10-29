@@ -49,6 +49,7 @@ Example:         "gev --path ".\application.evtx" --source "chkdsk, wininit" --l
 Text:
 ```
 PS> ./gev.exe --path "app_demo.evtx" --level "1, 2" --source "User Profile, perflib" --max 2 --direction 2 --format "text"
+
 ---------------------------------------------------------------------------------
 Id                 : 1552
 LevelDisplayName   : Error
@@ -73,6 +74,7 @@ Records            : 2
 XML:
 ```
 PS> ./gev.exe --path "app_demo.evtx" --level "1, 2" --source "User Profile, perflib" --max 2 --direction 2 --format "xml"
+
 <?xml version="1.0" encoding="utf-16"?>
 <ArrayOfRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Record>
@@ -99,6 +101,7 @@ PS> ./gev.exe --path "app_demo.evtx" --level "1, 2" --source "User Profile, perf
 JSON:
 ```
 PS> ./gev.exe --path "app_demo.evtx" --level "1, 2" --source "User Profile, perflib" --max 2 --direction 2 --format "json"
+
 [
   {
     "Index": 0,

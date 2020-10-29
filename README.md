@@ -23,24 +23,25 @@ gev: (g)et (ev)ent.  Written by Anthony Grimaldi, September 2019.
 Usage:
 --help ......... Help
 --path ......... Path to archived event viewer log
-                 the only argument that is required
+                     the only argument that is required
 --debug ........ Displays various debugging messages to the console
 --id ........... Id, comma separated (max 5)
-                 e.g. "-id 5,15,1337"
+                     e.g. '--id "5, 15, 1337"'
 --source ....... Sources, comma separated (max 5)
-                 e.g. '-source "vss, chkdsk, ntfs"'
+                     e.g. '--source "vss, chkdsk, ntfs"'
 --level ........ Sets the eventlevel.  Comma separated (max 5):
-                 1 = critical
-                 2 = error
-                 3 = warning
-                 4 = information
-                 5 = verbose
+                     1 = critical
+                     2 = error
+                     3 = warning
+                     4 = information
+                     5 = verbose
 --max .......... Sets the maximum number of events to output
 --direction .... Sets how to sort the output by date.  1 = Ascending, 2 = Descending
 --out-file ..... Sets the file gev outputs to
+
 Example:         "gev --path ".\application.evtx" --source "chkdsk, wininit" --level 1,2,3"
-                 this will search the application.evtx log for all chkdsk and wininit events
-                 that have an event level of "critical", "error", or "warning"
+                     this will search the application.evtx log for all chkdsk and wininit events
+                     that have an event level of "critical", "error", or "warning"
 ```
 
 ### Sample output:

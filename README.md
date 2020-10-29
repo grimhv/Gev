@@ -78,20 +78,20 @@ PS> ./gev.exe --path "app_demo.evtx" --level "1, 2" --source "User Profile, perf
   <Record>
     <Index>0</Index>
     <Id>1552</Id>
-    <LevelName>Error</LevelName>
-    <LevelNumber>2</LevelNumber>
-    <Date>12/17/2019 11:32:04 AM</Date>
-    <Source>Microsoft-Windows-User Profiles Service</Source>
-    <Description>User hive is loaded by another process (Registry Lock) Process name: C:\Windows\System32\svchost.exe, PID: 2632, ProfSvc PID: 1228.</Description>
+    <LevelDisplayName>Error</LevelDisplayName>
+    <Level>2</Level>
+    <TimeCreated>12/17/2019 11:32:04 AM</TimeCreated>
+    <ProviderName>Microsoft-Windows-User Profiles Service</ProviderName>
+    <FormatDescription>User hive is loaded by another process (Registry Lock) Process name: C:\Windows\System32\svchost.exe, PID: 2632, ProfSvc PID: 1228.</FormatDescription>
   </Record>
   <Record>
     <Index>1</Index>
     <Id>1017</Id>
-    <LevelName>Error</LevelName>
-    <LevelNumber>2</LevelNumber>
-    <Date>12/4/2019 10:37:19 AM</Date>
-    <Source>Microsoft-Windows-Perflib</Source>
-    <Description>Disabled performance counter data collection from the "ASP.NET_64_2.0.50727" service because the performance counter library for that service has generated one or more errors. The errors that forced this action have been written to the application event log. Correct the errors before enabling the performance counters for this service.</Description>
+    <LevelDisplayName>Error</LevelDisplayName>
+    <Level>2</Level>
+    <TimeCreated>12/4/2019 10:37:19 AM</TimeCreated>
+    <ProviderName>Microsoft-Windows-Perflib</ProviderName>
+    <FormatDescription>Disabled performance counter data collection from the "ASP.NET_64_2.0.50727" service because the performance counter library for that service has generated one or more errors. The errors that forced this action have been written to the application event log. Correct the errors before enabling the performance counters for this service.</FormatDescription>
   </Record>
 </ArrayOfRecord>
 ```
@@ -103,20 +103,20 @@ PS> ./gev.exe --path "app_demo.evtx" --level "1, 2" --source "User Profile, perf
   {
     "Index": 0,
     "Id": "1552",
-    "LevelName": "Error",
-    "LevelNumber": 2,
-    "Date": "12/17/2019 11:32:04 AM",
-    "Source": "Microsoft-Windows-User Profiles Service",
-    "Description": "User hive is loaded by another process (Registry Lock) Process name: C:\\Windows\\System32\\svchost.exe, PID: 2632, ProfSvc PID: 1228."
+    "LevelDisplayName": "Error",
+    "Level": 2,
+    "TimeCreated": "12/17/2019 11:32:04 AM",
+    "ProviderName": "Microsoft-Windows-User Profiles Service",
+    "FormatDescription": "User hive is loaded by another process (Registry Lock) Process name: C:\\Windows\\System32\\svchost.exe, PID: 2632, ProfSvc PID: 1228."
   },
   {
     "Index": 1,
     "Id": "1017",
-    "LevelName": "Error",
-    "LevelNumber": 2,
-    "Date": "12/4/2019 10:37:19 AM",
-    "Source": "Microsoft-Windows-Perflib",
-    "Description": "Disabled performance counter data collection from the \u0022ASP.NET_64_2.0.50727\u0022 service because the performance counter library for that service has generated one or more errors. The errors that forced this action have been written to the application event log. Correct the errors before enabling the performance counters for this service."
+    "LevelDisplayName": "Error",
+    "Level": 2,
+    "TimeCreated": "12/4/2019 10:37:19 AM",
+    "ProviderName": "Microsoft-Windows-Perflib",
+    "FormatDescription": "Disabled performance counter data collection from the \u0022ASP.NET_64_2.0.50727\u0022 service because the performance counter library for that service has generated one or more errors. The errors that forced this action have been written to the application event log. Correct the errors before enabling the performance counters for this service."
   }
 ]
 ```

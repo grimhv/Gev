@@ -34,14 +34,9 @@ namespace Honeypox.Gev
              *     Microsoft-Windows-Ntfs-UBPM
              *     Ntfs
              *     Ntfs_NtfsLog
-             * 
-             * We also add the exact text the user inputted just in case it doesn't exist inside
-             * event_providers.txt
              */
             sourceList.ForEach(source =>
             {
-                providerXPath.Add(source);
-
                 listOfProviders.Where(x => x.IndexOf(
                     source.Trim(), 0, StringComparison.OrdinalIgnoreCase) >= 0).ToList().ForEach(y =>
                         providerXPath.Add(y)
@@ -89,17 +84,17 @@ namespace Honeypox.Gev
         /// <returns>An XPath string.</returns>
         private static string RenderXPathFromList(List<string> list, string prefix, string element, string suffix, bool quote = false)
         {
+
             string delimiter = " or ";
             string equal = "=";
             if (quote)
             {
-                delimiter = $"'{delimiter}";
-                equal = $"{equal}'";
-                element = $"@{element}";
-                suffix = $"'{suffix}";
+                delimiter = "'" + delimiter;
+                equal = "='";
+                element = "@" + element;
+                suffix = "'" + suffix;
             }
-
-            return $"{prefix}{element}{equal}{list.Aggregate((a, b) => a + delimiter + element + equal + b)}{suffix}";
+            return prefix + element + equal + list.Aggregate((a, b) => a + delimiter + element + equal + b) + suffix;
         }
 
         /// <summary>

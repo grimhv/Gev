@@ -23,15 +23,16 @@ namespace Honeypox.Gev
     {
         private static void Main(string[] args)
         {
-            // Stopwatch for debugging
+            // Start the System.Diagnostics.Stopwatch to see how long the program takes to run
             Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
 
             // Instantiate a new object that holds query information
             GevLog.LogQuery log = new GevLog.LogQuery() { LogPath = "" };
 
             // Holds a list of all the records we have found
             var eventLogRecords = new List<GevLog.Record>();
-            
+
             // If user has not supplied any arguments, we'll display the help text
             if (args.Length == 0)
             {
@@ -43,13 +44,9 @@ namespace Honeypox.Gev
                 log = ParseArguments(args, log);
             }
 
-            // DEBUG MODE
-            if (log.DebugMode)
+            // DEBUG MODE: this is just to ensure that all the parameters are correct
+            if (log.DebugMode == true)
             {
-                // Start the System.Diagnostics.Stopwatch to see how long the program takes to run
-                stopWatch.Start();
-
-                // Print all arguments to the console
                 DisplayArguments(log);
             }
 
@@ -69,30 +66,20 @@ namespace Honeypox.Gev
             // If we have any Levels or IDs we'll need a prefix and suffix, otherwise the queryString should just be '*'
             string queryString = XPathBuilder.BuildXPathQuery(log);
 
-            if (log.DebugMode)
-            {
-                Console.WriteLine($"\n{queryString}");
-            }
-
             // Get our records that match our XPath query
             EventRecords(LogRecordCollection(log.LogPath, log.Direction, queryString), eventLogRecords);
 
             // If there were no records found, we'll alert the user
             if (Globals.TotalRecords < 1)
-            {
                 Console.WriteLine("No records found matching search criteria.");
-            }
             else
             {
                 OutputRecords(eventLogRecords, log);
 
-                // Metrics -- only for debugging
-                if (log.DebugMode)
-                {
-                    stopWatch.Stop();
-                    Console.WriteLine("Program run in " + stopWatch.ElapsedMilliseconds.ToString() +
-                        "ms with " + Globals.TotalRecords + " records found.");
-                }
+                // Metrics
+                stopWatch.Stop();
+                Console.WriteLine("Program run in " + stopWatch.ElapsedMilliseconds.ToString() +
+                    "ms with " + Globals.TotalRecords + " records found.");
             }
         }
 
@@ -455,9 +442,9 @@ namespace Honeypox.Gev
                 DisplayHelp(); // This also aborts
             }
 
-            // Dictionary which contains list of acceptable options as keys, and whether the 
-            // option requires arguments
-            // For instance, in: `--path .\hello.evtx`, ".\hello.evtx" is an argument
+            // Dictionary which contains list of acceptable arguments as keys, and whether the argument requires secondary parameters
+            // as the values
+            // For instance, in: `--path .\hello.evtx`, ".\hello.evtx" is a secondary parameter
             var argsDict = new Dictionary<string, bool>() {
                 {       "--path", true   },
                 {      "--debug", false  },
@@ -478,7 +465,7 @@ namespace Honeypox.Gev
                 {
                     string secondaryParameter = "";
 
-                    // if the Value for the Key is "true", it means we need to look for arguments
+                    // if the Value for the Key is "true", it means we need to look for secondary parameters
                     if (argsDict[key])
                     {
                         secondaryParameter = arguments[i + 1];
@@ -880,7 +867,6 @@ namespace Honeypox.Gev
                     Console.Write(", ");
                 }
             }
-            Console.Write("\"");
             Console.WriteLine($"\nSource count: {log.SourceFilter.Count}");
             Console.Write("\n");
         }

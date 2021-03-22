@@ -7,7 +7,9 @@ namespace Honeypox.Gev
         public class Record
 
         {
+            // Empty constructor required for XmlSerializer
             public Record() { }
+
             public Record(int index, string id, string levelName, int levelNumber, string date, string source, string description)
             {
                 Index = index;
@@ -18,6 +20,7 @@ namespace Honeypox.Gev
                 ProviderName = source;
                 FormatDescription = description;
             }
+
             public int Index { get; set; }
             public string Id { get; set; }
             public string LevelDisplayName { get; set; }
@@ -53,7 +56,7 @@ namespace Honeypox.Gev
             /// <summary>Direction for sorting events by TimeCreated.  1 = Ascending, 2 = Descending</summary>
             public int Direction { get; set; }
 
-            /// <summary>Format for output file.  Either 'xml', 'html', or 'text'.</summary>
+            /// <summary>Format for output file.  Either 'xml', 'html', or 'json'.</summary>
             public string Format { get; set; } = "text";
 
             /// <summary> Set by the --debug flag.  Outputs debugging info to the console. </summary>
@@ -63,8 +66,8 @@ namespace Honeypox.Gev
             public bool QuerySet { get; set; } = false;
 
             /* UNIMPLEMENTED
-             * public DateTime newestEvent { get; set; }
-             * public DateTime oldestEvent { get; set; }
+             * public DateTime NewestEvent { get; set; }
+             * public DateTime OldestEvent { get; set; }
              */
         }
 
